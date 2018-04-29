@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Title Page</title>
+        
+        <script>
+            function checkNumber() {
+                var numberAsText = document.getElementById("number_input").value
+                var aNumber = parseInt(numberAsText)
+                var remainder = Math.abs(aNumber % 2)
+                if (numberAsText != "" && !isNaN(aNumber)) {
+                    if (numberAsText == 0) {
+                        document.getElementById("result_display").innerHTML = "0 is neither even nor odd."
+                    }
+                    else if (remainder == 0) {
+                        document.getElementById("result_display").innerHTML = numberAsText + " is even."
+                    }
+                    else {
+                        document.getElementById("result_display").innerHTML = numberAsText + " is odd."
+                    }
+                }
+                else { 
+                    document.getElementById("result_display").innerHTML = "Please enter a number."
+                }
+            }
+        </script>
+        
+        <style>
+            body {
+                background-color: lightgray;
+            }
+            
+            input {
+                border: none;
+                border-radius: 5px;
+                box-shadow: 0px 0px 5px #666666 inset;
+                height: 25px;
+                width: 200px;
+                text-indent: 5px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1>Even or Odd?</h1>
+        Enter a number: <input id="number_input">
+        <button onclick="checkNumber()">Check It!</button>
+        <section id="result_display"></section>
+    </body>
+</html>
