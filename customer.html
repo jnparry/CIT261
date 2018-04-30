@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Group Loop</title>
+        
+        <script>
+            function addSaveCustomer() {
+                var name = document.getElementById("name_input").value
+                var age = document.getElementById("age_input").value * 1 //*1 to turn into a number
+                var inseam = document.getElementById("inseam_input").value * 1
+                
+                var clothingCustomer = {
+                    "name":name,
+                    "age":age,
+                    "inseam":inseam
+                }
+                
+                var allCustomers = null
+                var storedCustomersString = localStorage["all_customers"]
+                if (storedCustomersString == null) {
+                    allCustomers = []
+                }
+                else {
+                    allCustomers = JSON.parse(storedCustomersString)
+                }
+                allCustomers.push(clothingCustomer)
+                var allCustomersString = JSON.stringify(allCustomers)
+                localStorage["all_customers"] = allCustomersString
+                showAllCustomers()
+                
+                document.getElementById("name_input").value = null
+                document.getElementById("age_input").value = null
+                document.getElementById("inseam_input").value = null 
+            }
+            
+            function showAllCustomers() {
+                var storedCustomersString = localStorage["all_customers"]
+                if (storedCustomersString != null) {
+                    var allCustomers = JSON.parse(storedCustomersString)
+                    var customerDisplay = document.getElementById("all_customers_display")
+                    customerDisplay.innerHTML = null
+                    var numberOfCustomers = allCustomers.length
+                    for (var i = 0; i < numberOfCustomers; i++) {
+                        clothingCustomer = allCustomers[i]
+                        customerDisplay.innerHTML += "<hr><p>Customer: " + clothingCustomer["name"] + "</p><p>Age: " + clothingCustomer["age"] + "</p><p>Inseam: " + clothingCustomer["inseam"] + "</p>"
+                    }
+                }
+            }
+        </script>
+        
+        <style>
+            body {
+                background-color: lightgray;
+            }
+            
+            input {
+                border: none;
+                border-radius: 5px;
+                text-indent: 5px;
+                box-shadow: 0px 0px 5px #666666 inset;
+                height 25px;
+                width 200px;
+            }
+            
+            input:focus {
+                outline: none;
+            }
+            
+            #note_entry_area {
+                width: 500px;
+                padding-left: 5px;
+                border: none;
+                border-radius: 5px;
+                text-indent: 5px;
+                box-shadow: 0px 0px 5px #666666 inset;
+            }
+            
+            textarea {
+                margin-top: 10px;
+                border: none;
+                border-radius: 5px;
+                box-shadow: 0px 0px 5px #666666 inset;
+                width: 90%;
+                height: 150px;
+                text-indent: 5px;
+                resize:none;
+                overflow: scroll;
+            }
+            
+            img {
+                max-width: 40px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                border: none;
+                border-radius: 5px;
+                box-shadow: 0px 0px 5px #666666;
+            }
+        </style>
+    </head>
+    
+    <body onload="showAllCustomers()">
+        <section id="customer_entry_area">
+            <h1>Our Clothing Customers</h1>
+            <input id="name_input" placeholder="Name">
+            <input id="age_input" placeholder="Age">
+            <input id="inseam_input" placeholder="Inseam">
+            <br>
+            <img src="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-2/512/create_user_man_male-512.png" onclick="addSaveCustomer()">
+        </section>
+        <section id="all_customers_display"></section>
+    </body>
+</html>
