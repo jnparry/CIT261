@@ -6,6 +6,7 @@ function buttonClicked(button) {
     case 'M':
       break;
     case 'C':
+      clear();
       break;
     case '/':
       break;
@@ -21,4 +22,8 @@ function buttonClicked(button) {
       //if it made it to here it's a number
       inputBox.value = inputBox.value + button.innerHTML;
   }
+}
+
+function clear() {
+    document.getElementById('calcInput').innerHTML = "";
 }

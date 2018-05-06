@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Justice League</title>
+        
+        <script>
+            const body = document.body;
+            typeof body; // "object"
+            body.nodeType; // 1 (element)
+            body.nodeName; // "BODY"
+            
+            const h1 = document.getElementById("title");
+            const listItems = document.getElementsByTagName("li");
+            
+            listItems[0]; // <li class="hero">Superman</li>
+            listItems[1]; // <li class="vigilante hero" id="bats">Batman</li>
+            listItems[2]; // <li class="hero">Wonder Woman</li>
+            
+            const heroes = document.getElementsByClassName("hero");
+            heroes.length; // 3
+            document.getElementsByClassName("villian").length; // 0
+            
+            document.querySelector("#bats"); // <li class="vigilante hero" id="bats">Batman</li>
+            document.querySelectorAll(".hero"); // NodeList [<li class="hero">, <li id="bats">, <li class="hero">]
+            
+            const wonderWoman = document.querySelector("li:last-child");
+            const ul = document.querySelector("ul#roster");
+            const batman = document.querySelector("li#bats");
+            
+            const heroes = document.getElementById("roster");
+            
+            heroes.childNodes; /* NodeList [#text "
+            ", <li class="hero">, #text "
+            ", <li id="bats">, #text "
+            ", <li class="hero">, #text "
+            ", <li class="hero">, #text "] */
+            heroes.children; // only contain list items
+            /* HTMLCollection [<li class="hero">, <li id="bats">, <li class="hero">, <li class="hero">] (4) */
+            
+            heroes.children.length; // 3
+            heroes.firstChild; // #text " "
+            heroes.lastChild; // #text " "
+            
+            const wonderWoman = document.querySelector("ul#roster li:last-child");
+            wonderWoman.parentNode; // <u id="roster">...</ul>
+            wonderWoman.nextSibling; // #text " "
+            wonderWoman.previousSibling; // #text " "            
+//            <li class="hero">Wonder Woman</li>
+            const textNode = wonderWoman.firstChild; // "Wonder Woman"
+            textNode.nodeValue; // "Wonder Woman"
+            wonderWoman.textContent; // "Wonder Woman"
+            
+            wonderWoman.getAttribute("class"); // "hero"
+            wonderWoman.getAttribute("src"); // null
+            
+            wonderWoman.setAttribute("class", "villian"); // undefined
+            wonderWoman.getAttribute("class"); // villian
+            wonderWoman.setAttribute("id", "amazon");
+            wonderWoman.getAttribute("id"); // amazon
+            
+            wonderWoman.className; // "villian"
+            wonderWoman.className = "hero" // "hero"
+            
+            wonderWoman.classList.add("warrior");
+            wonderWoman.className; // "hero warrior"
+            wonderWoman.classList.remove("warrior");
+            
+            wonderWoman.classList.toggle("hero") // will remove the "hero" class // output: false
+            wonderWoman.classList.toggle("sport"); // will add the "hero" class back // output: true
+            
+            wonderWoman.classList.contains("hero"); // true
+            wonderWoman.classList.contains("villian") // false
+            
+            const flash = document.createElement("li");
+            const flashText = document.createTextNode("Flash");
+            flash.appendChild(flashText);
+            const flash = document.createElement("li");
+            flash.textContent = "Flash";
+            
+            function createElement (tag, text) {
+                const el = document.createElement(tag);
+                el.textContent = text;
+                return el;
+            }
+            
+            const aquaman = createElement("li", "Aquaman");
+            
+            heroes.appendChild(flash);
+            heroes.insertBefore(aquaman, wonderWoman);
+            heroes.appendChild(wonderWoman);
+            heroes.removeChild(aquaman); // <li>Aquaman</li>
+            heroes.appendChild(aquaman);
+            
+            const h1 = document.getElementById("title");
+            const oldText = h1.firstChild;
+            const newText = document.createTextNode("Justine League of America");
+            h1.replaceChild(newText, oldText);
+            
+            heroes.innerHTML // " <li class=\"hero\">Superman</li> <li class=\"vigilante hero\" id=\"bats\">Batman</li> <li class=\"hero\">Wonder Woman</li>
+            h1.innerHTML = "Suicide Squad"
+            heroes.innerHTML = "<li>Harley Quinn </li><li>Deadshot</li><li>Killer Croc</li><li>Enchantress</li><li>Captain Boomerang</li><li>Katana</li><li>Slipknot</li>";
+            
+            const heroes = document.getElementById("roster");
+            const list = heroes.children;
+            list.length; // 3
+            
+            const batman = document.getElementById("bats"); // undefined
+            heroes.removeChild(batman);
+            list.length; // 2
+            heroes.children[2]; // undefined
+            
+            const heroes = document.getElementById)"roster");
+            const superman = heroes.children[0];
+            superman.style.border = "red 2px solid"; // "red 2px solid"
+            superman.style.backgroundColor = "blue"; // "blue"
+            superman.style["background color"] = "blue"; // "blue"
+            superman.style.display = "none"; // "none"
+            superman.style.display = "block";
+            
+            getComputedStyle(superman); // CSSStyleDeclaration {0: "alt", 1: "animation-delay", 2: "animation-direction", 3: "animation-duration", 4: "animation-fill-mode", 5: "animation-iteration-count", 6: "animation-name", 7: "animation-play-state", 8: "animation-timing-function", 9: "background-attachment", ...}
+            
+            getComputedStyle(superman).getPropertyCSSValue("color").cssText; // "rgb(0, 0, 0)"
+            
+            superman.style.border("red 2px solid");
+            superman.classList.add("highlighted");
+            
+            /* Css
+            .highlighted {
+                border: red 2px solid;
+            }
+            */
+            
+        </script>
+        
+        <style>
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <h1 id="title">Justice League</h1>
+        </header>
+        <ul id="roster">
+            <li class="hero">Superman</li>
+            <li class="vigilante hero" id="bats">Batman</li>
+            <li class="hero">Wonder Woman</li>
+        </ul>
+    </body>
+</html>
