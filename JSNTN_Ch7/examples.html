@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Examples - Ch 7</title>
+        
+        <script>
+            document.onclick = functiion () { console.log('You clicked on the page!'); }
+            
+            document.body.addEventListener('click', doSomething);
+            
+            addEventListener('click', () => alert('You Clicked!'));
+            
+            funciton doSomething () {
+                alert('You Clicked!');
+            }
+        </script>
+        
+        <style>
+        </style>
+    </head>
+    
+    <body>
+        <p onclick="console.log('You Clicked Me!')">Click Me</p>
+    </body>
+</html>
