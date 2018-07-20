@@ -1,0 +1,45 @@
+<!--preload auto, none, metadata : to set settings for preloading the video-->
+
+<!--autoplay, loop, muted : additional boolean attributes-->
+<video src="example.webm" width="375" height="280" constrols></video>
+
+<!--poster provides the teaser image of the video-->
+<video width="375" height="280" controls poster="teaser.jpg">
+    
+    <!--Full Browser Support-->
+    <source src="example.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    <source src="example.webm" type='video/webm; codecs="vp8, vorbis"'>
+    <source src="example.ogv" type='video/ogg; codecs="theora, vorbis"'>
+    
+    <!-- fallback to Flash: -->
+    <object width="375" height="280" type="application/x-shockwave-flash" data="mediaplayer-5.5/player.swf">
+        <param name="movie" value="mediaplayer-5.5/player.swf">
+        <param name="allowFullScreen" value="true">
+        <param name="wmode" value="transparent">
+        <param name="flashvars" value="controlbar=over&amp; image=images/teaser.jpg&amp; file=example.mp4">
+        
+    <!-- fallback image -->
+    <img src="teaser.jpg" width="375" height="280" alt="" title="No video playback capabilities"> </object>
+</video>
+
+<!--Put the following code in the '.htaccess' file or equivalent-->
+<!--AddType video/ogg .ogv
+    Addtype video/mp4 .mp4
+    AddType video/webm .webm-->
+
+<!--Encoding Video Files: use Miro Video Converter-->
+
+<!--Custom Video Controls-->
+<div id="controls" class="hidden">
+    <a id="playPause">Play/Pause</a>
+    <span id="timer">00:00</span>
+    <a id="muteUnmute">Mute/Unmute</a>
+</div>
+
+<!--Accessibility : subtitles, captions, descriptions, chapters, metadata-->
+<video src="example.webm">
+    <track kind="subtitles" src="example.en.vtt" srclang="en" label="English" default>
+    <track kind="captions" src="example.en.hoh.vtt" srclang="en" label="English for the Hard of Hearing">
+    <track kind="subtitles" src="example.fr.vtt" srclang="fr" lang="fr"label="Français">
+    <track kind="subtitles" src="example.de.vtt" srclang="de" lang="de" label="Deutsch">
+</video>

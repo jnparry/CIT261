@@ -1,0 +1,99 @@
+html {
+    margin: 10px;
+}
+
+h1 span {
+    transition: transform 0.2s ease-out 50ms;
+    
+    display: inline-block;
+    font-size: 30px;
+    color: #999999;
+}
+
+h1:hover span {
+    color: #484848;
+    transform: rotate(10deg) translateX(40px) scale(1.5);
+}
+
+/*(left, top)*/
+#t1 {
+    transform: translate(45px, 0px);
+    color: black;
+}
+
+/* also have translateY as an option */
+#t2 {
+    transform: translateX(5px;)
+}
+
+/* Can use skewX and skewY */
+#t3 {
+    font-size: 2em;
+    transform: skew(15deg, 4deg);
+}
+
+#t4 {
+    position: relative;
+    top: 200px;
+    left: 200px;
+}
+
+#t5 {
+/*    transition: all 0.2s ease-out 50ms */
+    transition-property: transform;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-delay: 50ms;
+}
+
+#t5:hover {
+    color: brown;
+    transform: translateX(300px) scale(1.5);    
+}
+
+/* Key Frames */
+@keyframes moveDown {
+    from {
+        transform: translateY(10px);
+    } to {
+        transform: translateY(20px);
+    }
+}
+
+@keyframes appearDisappear {
+    0%, 100% {
+        opacity: 0;
+    }
+    
+    20%, 80% {
+        opacity: 1;
+    }
+}
+
+@keyframes move {
+    from {left: 0px;}
+    to {left: 200px;}
+}
+
+@keyframes move2 {
+    from {left: 0px;}
+    to {left: 700px;}
+}
+
+#cat {
+    width: 10%;
+    position: relative;
+    animation: move 5s infinite;
+}
+
+#cat2 {
+    width: 20%;
+    position: relative;
+    animation: move2 7s infinite;
+}
+
+#cat3 {
+    width: 20%;
+    position: relative;
+    animation: move 6s infinite;
+}
